@@ -20,7 +20,7 @@ export const Button = ({
     large: "px-8 py-4 text-xl font-medium",
   }[size];
 
-  const mode = primary ? "bg-pink-500" : "bg-pink-200";
+  const mode = primary ? "bg-blue-500" : "bg-red-500";
 
   return (
     <button className={`${sizeClasses} ${mode} rounded-xl text-white`}>
