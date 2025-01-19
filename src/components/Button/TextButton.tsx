@@ -9,7 +9,12 @@ export interface TextButtonProps {
   onClick?: () => void;
 }
 
-export const TextButton = ({ color, label, size }: TextButtonProps) => {
+export const TextButton = ({
+  color,
+  label,
+  size,
+  ...props
+}: TextButtonProps) => {
   const colorClasses = {
     shinji: "text-shinji",
     asuka: "text-asuka",
@@ -22,5 +27,9 @@ export const TextButton = ({ color, label, size }: TextButtonProps) => {
     large: "text-xl font-bold",
   }[size || "small"];
 
-  return <button className={`${sizeClasses} ${colorClasses}`}>{label}</button>;
+  return (
+    <button className={`${sizeClasses} ${colorClasses}`} {...props}>
+      {label}
+    </button>
+  );
 };

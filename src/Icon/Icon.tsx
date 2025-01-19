@@ -1,42 +1,33 @@
-import { cx } from "class-variance-authority";
 import icons from "../shared/assets/icons";
-import { twMerge } from "tailwind-merge";
 
-export type IconType = keyof typeof icons;
-type IconVariant = "primary" | "outlined";
-type IconSize = "sm" | "md" | "lg";
-
-interface IconProps {
+export interface IconProps {
   /** 아이콘 종류 */
-  name: IconType;
-  /** 아이콘 타입 */
-  variant?: IconVariant;
+  name:
+    | "add"
+    | "arrow_back"
+    | "arrow_forward"
+    | "close"
+    | "delete"
+    | "edit"
+    | "menu"
+    | "search";
+  /** 아이콘 색상 */
+  color: "red" | "black";
+
   /** 아이콘 크기 */
-  size?: IconSize;
-  /** 적용할 클래스명 */
-  className?: string;
+  size?: "small" | "medium" | "large";
 }
 
-const Icon = ({
-  name,
-  variant = "outlined",
-  size = "md",
-  className,
-}: IconProps) => {
-  const iconClasses = twMerge(
-    cx("fill-none stroke-2", {
-      "stroke-white": variant === "outlined",
-      "stroke-slate-900": variant === "primary",
-
-      "w-4": size === "sm",
-      "w-5": size === "md",
-      "w-6": size === "lg",
-    }),
-    className
-  );
-
+export const Icon = ({ name, color, size, ...props }: IconProps) => {
   const SVGIcon = icons[name];
-  return <SVGIcon className={iconClasses} />;
+  const colorClasses = {
+    red: "fill-red-600",
+    black: "fill-black",
+  }[color || "red"];
+  const sizeClasses = {
+    small: "w-6 ",
+    medium: "w-8 ",
+    large: "w-12",
+  }[size || "medium"];
+  return <SVGIcon className={`${sizeClasses} ${colorClasses}`} />;
 };
-
-export default Icon;

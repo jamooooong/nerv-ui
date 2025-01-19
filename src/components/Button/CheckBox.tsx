@@ -1,4 +1,4 @@
-export interface ButtonProps {
+export interface CheckBoxProps {
   /** Is this the principal call to action on the page? */
   color?: "shinji" | "asuka" | "rei" | "misato";
   /** How large should the button be? */
@@ -9,7 +9,7 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
-export const Button = ({ color, size, label, ...props }: ButtonProps) => {
+export const CheckBox = ({ color, size, label, ...props }: CheckBoxProps) => {
   const colorClasses = {
     shinji: "bg-shinji",
     asuka: "bg-asuka",
@@ -23,11 +23,9 @@ export const Button = ({ color, size, label, ...props }: ButtonProps) => {
   }[size || "small"];
 
   return (
-    <button
-      className={`${sizeClasses} ${colorClasses} rounded-xl text-white`}
-      {...props}
-    >
-      {label}
-    </button>
+    <div className="flex flex-row gap-2">
+      <input type="checkbox" />
+      <p>{label}</p>
+    </div>
   );
 };

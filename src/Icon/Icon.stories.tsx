@@ -1,26 +1,67 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Icon from "./Icon";
+import { Icon } from "./Icon";
 
 const meta: Meta<typeof Icon> = {
-  title: "Primitives/Icon",
-  tags: ["autodocs"],
+  title: "Icon/Icon",
   component: Icon,
   parameters: {
-    docs: {
-      description: {
-        component: "SVG 아이콘을 표시합니다.",
-      },
-    },
     layout: "centered",
   },
-};
+  tags: ["autodocs"],
+
+  argTypes: {
+    name: {
+      control: "select",
+      options: [
+        "add",
+        "arrow_back",
+        "arrow_forward",
+        "close",
+        "delete",
+        "edit",
+        "menu",
+        "search",
+      ],
+      description: "아이콘의 종류를 설정합니다",
+      table: {
+        defaultValue: { summary: "add" },
+      },
+    },
+
+    color: {
+      control: "select",
+      options: ["red", "black"],
+      description: "아이콘의 색상을 설정합니다",
+      table: {
+        defaultValue: { summary: "red" },
+      },
+    },
+
+    size: {
+      control: "radio",
+      options: ["small", "medium", "large"],
+      description: "아이콘의 크기를 설정합니다",
+      table: {
+        defaultValue: { summary: "medium" },
+      },
+    },
+  },
+
+  args: {
+    name: "add",
+    color: "red",
+    size: "medium",
+  },
+} satisfies Meta<typeof Icon>;
 
 export default meta;
-type Story = StoryObj<typeof Icon>;
+
+type Story = StoryObj<typeof meta>;
 
 export const Example: Story = {
   args: {
-    name: "mail",
-    variant: "primary",
+    name: "add",
+    color: "red",
+    size: "medium",
   },
 };
