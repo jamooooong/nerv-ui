@@ -5,6 +5,11 @@ const meta: Meta<typeof Icon> = {
   title: "Icon/Icon",
   component: Icon,
   parameters: {
+    docs: {
+      description: {
+        component: "svg 아이콘을 렌더링합니다",
+      },
+    },
     layout: "centered",
   },
   tags: ["autodocs"],
@@ -18,9 +23,18 @@ const meta: Meta<typeof Icon> = {
         "arrow_forward",
         "close",
         "delete",
+        "done",
         "edit",
+        "favorite",
+        "home",
         "menu",
+        "notifications",
+        "person",
         "search",
+        "settings",
+        "share",
+        "star",
+        "thumb_up",
       ],
       description: "아이콘의 종류를 설정합니다",
       table: {
@@ -30,10 +44,10 @@ const meta: Meta<typeof Icon> = {
 
     color: {
       control: "select",
-      options: ["red", "black"],
+      options: ["shinji", "asuka", "rei", "misato", "gray"],
       description: "아이콘의 색상을 설정합니다",
       table: {
-        defaultValue: { summary: "red" },
+        defaultValue: { summary: "shinji" },
       },
     },
 
@@ -49,7 +63,7 @@ const meta: Meta<typeof Icon> = {
 
   args: {
     name: "add",
-    color: "red",
+    color: "shinji",
     size: "medium",
   },
 } satisfies Meta<typeof Icon>;
@@ -61,7 +75,7 @@ type Story = StoryObj<typeof meta>;
 export const Example: Story = {
   args: {
     name: "add",
-    color: "red",
+    color: "shinji",
     size: "medium",
   },
 };
